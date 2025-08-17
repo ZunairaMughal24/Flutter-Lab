@@ -94,7 +94,7 @@ class ImageGrid extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             photo.author,
-                            maxLines: 2,
+                            maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                           ),
