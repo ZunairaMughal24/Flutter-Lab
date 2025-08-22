@@ -1,3 +1,4 @@
+import 'package:api_integration/core/const/app_theme.dart';
 import 'package:api_integration/features/image_api/presentation/screens/image_api_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      title: 'API integration', home: ImageGrid());
+      title: 'API integration',
+      home: ImageGrid(),
+    );
   }
 }

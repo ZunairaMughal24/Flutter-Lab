@@ -1,10 +1,11 @@
 import 'dart:developer';
+import 'package:api_integration/core/utils/app_colors.dart';
 import 'package:api_integration/features/image_api/data/repositories/image_api_repository.dart';
 import 'package:api_integration/features/image_api/presentation/bloc/image_api_bloc.dart';
 import 'package:api_integration/features/image_api/presentation/bloc/image_events.dart';
 import 'package:api_integration/features/image_api/presentation/bloc/image_states.dart';
-import 'package:api_integration/utils/app_colors.dart';
-import 'package:api_integration/utils/app_text_theme.dart';
+
+import 'package:api_integration/core/utils/app_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,9 +17,7 @@ class ImageGrid extends StatelessWidget {
     return BlocProvider(
       create: (context) => PhotoBloc(PhotoRepositoryImpl()),
       child: Scaffold(
-        backgroundColor: AppColors.white,
         appBar: AppBar(
-          backgroundColor: AppColors.white,
           elevation: 0,
           title: Text(
             "Image Grid",
@@ -80,14 +79,20 @@ class ImageGrid extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: Image.network(
-                            photo.downloadUrl,
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            errorBuilder: (context, error, stackTrace) {
-                              log("Error loading image: $error");
-                              return const Icon(Icons.broken_image, size: 50);
-                            },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              topRight: Radius.circular(12),
+                            ),
+                            child: Image.network(
+                              photo.downloadUrl,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              errorBuilder: (context, error, stackTrace) {
+                                log("Error loading image: $error");
+                                return const Icon(Icons.broken_image, size: 50);
+                              },
+                            ),
                           ),
                         ),
                         Padding(
