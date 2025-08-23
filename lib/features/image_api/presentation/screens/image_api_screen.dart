@@ -71,43 +71,7 @@ class ImageGrid extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final photo = state.photos[index];
                   return
-                  // Card(
-                  //   shape: RoundedRectangleBorder(
-                  //     borderRadius: BorderRadius.circular(12),
-                  //   ),
-                  //   elevation: 4,
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.center,
-                  //     children: [
-                  //       Expanded(
-                  //         child: ClipRRect(
-                  //           borderRadius: BorderRadius.only(
-                  //             topLeft: Radius.circular(12),
-                  //             topRight: Radius.circular(12),
-                  //           ),
-                  //           child: Image.network(
-                  //             photo.downloadUrl,
-                  //             fit: BoxFit.cover,
-                  //             width: double.infinity,
-                  //             errorBuilder: (context, error, stackTrace) {
-                  //               log("Error loading image: $error");
-                  //               return const Icon(Icons.broken_image, size: 50);
-                  //             },
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       Padding(
-                  //         padding: const EdgeInsets.all(8.0),
-                  //         child: Text(
-                  //           photo.author,
-                  //           maxLines: 3,
-                  //           overflow: TextOverflow.ellipsis,
-                  //           textAlign: TextAlign.center,
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // );
+                 
                   Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
