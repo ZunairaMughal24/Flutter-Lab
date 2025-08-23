@@ -64,44 +64,126 @@ class ImageGrid extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  childAspectRatio: 1,
+                  childAspectRatio: 0.90,
                 ),
                 padding: const EdgeInsets.all(10),
                 itemCount: state.photos.length,
                 itemBuilder: (context, index) {
                   final photo = state.photos[index];
-                  return Card(
+                  return
+                  // Card(
+                  //   shape: RoundedRectangleBorder(
+                  //     borderRadius: BorderRadius.circular(12),
+                  //   ),
+                  //   elevation: 4,
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       Expanded(
+                  //         child: ClipRRect(
+                  //           borderRadius: BorderRadius.only(
+                  //             topLeft: Radius.circular(12),
+                  //             topRight: Radius.circular(12),
+                  //           ),
+                  //           child: Image.network(
+                  //             photo.downloadUrl,
+                  //             fit: BoxFit.cover,
+                  //             width: double.infinity,
+                  //             errorBuilder: (context, error, stackTrace) {
+                  //               log("Error loading image: $error");
+                  //               return const Icon(Icons.broken_image, size: 50);
+                  //             },
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Padding(
+                  //         padding: const EdgeInsets.all(8.0),
+                  //         child: Text(
+                  //           photo.author,
+                  //           maxLines: 3,
+                  //           overflow: TextOverflow.ellipsis,
+                  //           textAlign: TextAlign.center,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // );
+                  Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                    elevation: 4,
+                    elevation: 6,
+                    shadowColor: Colors.black26,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(12),
-                              topRight: Radius.circular(12),
-                            ),
-                            child: Image.network(
-                              photo.downloadUrl,
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                              errorBuilder: (context, error, stackTrace) {
-                                log("Error loading image: $error");
-                                return const Icon(Icons.broken_image, size: 50);
-                              },
-                            ),
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  topRight: Radius.circular(16),
+                                ),
+                                child: Image.network(
+                                  photo.downloadUrl,
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    log("Error loading image: $error");
+                                    return const Center(
+                                      child: Icon(Icons.broken_image, size: 50),
+                                    );
+                                  },
+                                ),
+                              ),
+
+                              Positioned(
+                                top: 55,
+                                right: 8,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white.withOpacity(
+                                    0.8,
+                                  ),
+                                  child: IconButton(
+                                    icon: const Icon(
+                                      Icons.favorite_border,
+                                      color: AppColors.errorRed,
+                                    ),
+                                    onPressed: () {
+                                      log("Liked photo id: ${photo.id}");
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
+
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            photo.author,
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                photo.author,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTextTheme.bodyMedium(
+                                  color: AppColors.blackColor,
+                                  weight: FontWeight.bold,
+                                ).copyWith(fontSize: 14),
+                              ),
+                              const SizedBox(height: 4),
+
+                              Text(
+                                "\$${(photo.width % 100) + 20}.00",
+                                style: AppTextTheme.bodyMedium(
+                                  color: AppColors.primaryColor,
+                                  weight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
