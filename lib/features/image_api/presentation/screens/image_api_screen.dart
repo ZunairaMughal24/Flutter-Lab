@@ -1,11 +1,12 @@
 import 'dart:developer';
 import 'package:api_integration/core/utils/app_colors.dart';
+import 'package:api_integration/core/utils/app_text_theme.dart';
 import 'package:api_integration/features/image_api/data/repositories/image_api_repository.dart';
 import 'package:api_integration/features/image_api/presentation/bloc/image_api_bloc.dart';
 import 'package:api_integration/features/image_api/presentation/bloc/image_events.dart';
 import 'package:api_integration/features/image_api/presentation/bloc/image_states.dart';
-
-import 'package:api_integration/core/utils/app_text_theme.dart';
+import 'package:api_integration/features/image_api/presentation/widgets/custom_network_image.dart';
+import 'package:api_integration/features/quotes_api/presentation/widgets/primary_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -70,37 +71,14 @@ class ImageGrid extends StatelessWidget {
                 itemCount: state.photos.length,
                 itemBuilder: (context, index) {
                   final photo = state.photos[index];
-                  return
-                 
-                  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    elevation: 6,
-                    shadowColor: Colors.black26,
+                  return AppCard(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Stack(
                             children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(16),
-                                  topRight: Radius.circular(16),
-                                ),
-                                child: Image.network(
-                                  photo.downloadUrl,
-                                  fit: BoxFit.cover,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    log("Error loading image: $error");
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, size: 50),
-                                    );
-                                  },
-                                ),
-                              ),
+                              CustomNetworkImage(imageUrl: photo.downloadUrl),
 
                               Positioned(
                                 top: 55,
@@ -123,7 +101,6 @@ class ImageGrid extends StatelessWidget {
                             ],
                           ),
                         ),
-
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Column(
@@ -139,7 +116,6 @@ class ImageGrid extends StatelessWidget {
                                 ).copyWith(fontSize: 14),
                               ),
                               const SizedBox(height: 4),
-
                               Text(
                                 "\$${(photo.width % 100) + 20}.00",
                                 style: AppTextTheme.bodyMedium(
@@ -163,7 +139,6 @@ class ImageGrid extends StatelessWidget {
                 ),
               );
             }
-
             return const SizedBox();
           },
         ),
