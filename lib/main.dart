@@ -1,12 +1,18 @@
 import 'package:api_integration/core/const/app_theme.dart';
-import 'package:api_integration/features/image_api/presentation/screens/image_api_screen.dart';
-import 'package:api_integration/features/quotes_api/presentation/screens/quotes_api_screen.dart';
 import 'package:api_integration/features/sliver_widget.dart';
+import 'package:api_integration/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() async{
+  
   WidgetsFlutterBinding.ensureInitialized();
+
+
+await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,

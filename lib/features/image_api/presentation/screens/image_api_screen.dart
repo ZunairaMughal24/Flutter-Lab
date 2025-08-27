@@ -5,8 +5,9 @@ import 'package:api_integration/features/image_api/data/repositories/image_api_r
 import 'package:api_integration/features/image_api/presentation/bloc/image_api_bloc.dart';
 import 'package:api_integration/features/image_api/presentation/bloc/image_events.dart';
 import 'package:api_integration/features/image_api/presentation/bloc/image_states.dart';
-import 'package:api_integration/features/image_api/presentation/widgets/custom_network_image.dart';
+
 import 'package:api_integration/features/quotes_api/presentation/widgets/primary_card.dart';
+import 'package:api_integration/features/quotes_api/presentation/widgets/primary_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
