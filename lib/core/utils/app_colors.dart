@@ -4,6 +4,7 @@ class AppColors {
   static const Color primaryColor = Color(0xFFcfaf75);
   static const Color secondaryColor = Color.fromARGB(255, 214, 176, 106);
   static const Color white = Color(0xFFfafafa);
+  static const Color textFieldColor = const Color.fromARGB(255, 236, 203, 173);
 
   static const Color secondaryWhite = Color(0xFFF7E7F7);
   static const Color buttonColor = Color(0xFFcfaf75);
