@@ -45,110 +45,113 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: AuthCard(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                50.heightBox,
-                Text(
-                  "ANTIQUES",
-                  style: AppTextTheme.h3(
-                    color: Colors.brown,
-                    weight: FontWeight.bold,
-                    fontFamily: "regular",
-                  ),
-                ),
-                Text(
-                  "Furniture",
-                  style: AppTextTheme.bodyMedium(
-                    color: AppColors.primaryColor,
-                    weight: FontWeight.bold,
-                    fontFamily: "regular",
-                  ).copyWith(fontSize: 18),
-                ),
-
-                Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      20.heightBox,
-                      Text(
-                        "Login",
-                        style: AppTextTheme.h4(
-                          weight: FontWeight.bold,
-                          fontFamily: "regular",
-                        ),
-                      ).pOnly(left: 6),
-                      8.heightBox,
-                      Text(
-                        'Please enter your email and password to access your account.',
-                        style: AppTextTheme.bodyMedium(
-                          color: AppColors.lightGrey,
-                        ).copyWith(fontSize: 15),
-                      ).pOnly(left: 6),
-                    ],
-                  ),
-                ),
-                15.heightBox,
-                PrimaryTextField(
-                  controller: _emailController,
-                  labelText: "Email",
-
-                  prefixIcon: const Icon(Icons.email),
-                  validator: Validators.validateEmail,
-                ),
-                8.heightBox,
-                PrimaryTextField(
-                  controller: _passwordController,
-                  labelText: "Password",
-                  obscureText: !_passwordVisible,
-                  prefixIcon: const Icon(Icons.lock),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _passwordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
+        child: Center(
+          child: AuthCard(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  50.heightBox,
+                  Text(
+                    "ANTIQUES",
+                    style: AppTextTheme.h3(
+                      color: Colors.brown,
+                      weight: FontWeight.bold,
+                      fontFamily: "regular",
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _passwordVisible = !_passwordVisible;
-                      });
-                    },
                   ),
-                  validator: Validators.validatePassword,
-                ),
-                20.heightBox,
-                PrimaryButton(text: 'Login', onTap: _submit),
+                  Text(
+                    "Furniture",
+                    style: AppTextTheme.bodyMedium(
+                      color: AppColors.primaryColor,
+                      weight: FontWeight.bold,
+                      fontFamily: "regular",
+                    ).copyWith(fontSize: 18),
+                  ),
 
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account? ",
-                      style: AppTextTheme.bodyMedium(
-                        color: Colors.black,
-                      ).copyWith(fontSize: 14),
+                  Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        20.heightBox,
+                        Text(
+                          "Login",
+                          style: AppTextTheme.h4(
+                            weight: FontWeight.bold,
+                            fontFamily: "regular",
+                          ),
+                        ).pOnly(left: 6),
+                        8.heightBox,
+                        Text(
+                          'Please enter your email and password to access your account.',
+                          style: AppTextTheme.bodyMedium(
+                            color: AppColors.lightGrey,
+                          ).copyWith(fontSize: 15),
+                        ).pOnly(left: 6),
+                      ],
                     ),
-                    TextButton(
+                  ),
+                  15.heightBox,
+                  PrimaryTextField(
+                    controller: _emailController,
+                    labelText: "Email",
+
+                    prefixIcon: const Icon(Icons.email),
+                    validator: Validators.validateEmail,
+                  ),
+                  8.heightBox,
+                  PrimaryTextField(
+                    controller: _passwordController,
+                    labelText: "Password",
+                    obscureText: !_passwordVisible,
+                    prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
                       onPressed: () {
-                        context.push(AppRoutes.signUp);
+                        setState(() {
+                          _passwordVisible = !_passwordVisible;
+                        });
                       },
-                      
-                      child: Text(
-                        'Create Account',
+                    ),
+                    validator: Validators.validatePassword,
+                  ),
+                  20.heightBox,
+                  PrimaryButton(text: 'Login', onTap: _submit),
+                  10.heightBox,
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account? ",
                         style: AppTextTheme.bodyMedium(
-                          color: AppColors.primaryColor,
+                          color: Colors.black,
                         ).copyWith(fontSize: 14),
                       ),
-                    ),
-                  ],
-                ).px8(),
-              ],
-            ).px12(),
-          ),
-        ).pOnly(left: 16, right: 16, top: 50).safeArea(),
+                      TextButton(
+                        onPressed: () {
+                          context.push(AppRoutes.signUp);
+                        },
+
+                        child: Text(
+                          'Create Account',
+                          style: AppTextTheme.bodyMedium(
+                            color: AppColors.primaryColor,
+                            weight: FontWeight.w500,
+                          ).copyWith(fontSize: 14),
+                        ),
+                      ),
+                    ],
+                  ).px8(),
+                ],
+              ).px12(),
+            ),
+          ).pOnly(left: 16, right: 16, top: 50).safeArea(),
+        ),
       ),
     );
   }
