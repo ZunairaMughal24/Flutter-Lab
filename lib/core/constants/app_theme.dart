@@ -1,4 +1,3 @@
-
 import 'package:api_integration/core/utils/app_colors.dart';
 
 import 'package:flutter/material.dart';
@@ -28,23 +27,21 @@ class AppTheme {
           color: AppColors.blackColor,
           fontSize: 19,
           fontWeight: FontWeight.w600,
-
-    
         ),
         centerTitle: true,
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
           color: AppColors.blackColor,
-          
+          fontFamily: "regular",
         ),
         bodyMedium: TextStyle(
           color: AppColors.blackColor,
-       
+          fontFamily: "regular",
         ),
         bodySmall: TextStyle(
           color: AppColors.blackColor,
-       
+          fontFamily: "regular",
         ),
       ),
     );

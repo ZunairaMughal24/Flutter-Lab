@@ -1,5 +1,6 @@
-import 'package:api_integration/features/authentication/login/presentation/screens/login_screen.dart';
-import 'package:api_integration/features/authentication/sign_up/presentation/screens/sign_up_screen.dart';
+import 'package:api_integration/features/authentication/presentation/screens/home_screen.dart';
+import 'package:api_integration/features/authentication/presentation/screens/login_screen.dart';
+import 'package:api_integration/features/authentication/presentation/screens/sign_up_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 
@@ -24,14 +25,14 @@ CustomTransitionPage buildSlideTransition({
 abstract class AppRoutes {
   static const String splashScreenRoute = '/splash_screen';
 
-  static const String signUp = '/signUp';
-  static const String login = '/login';
+  static const String signUpScreenRoute = '/signUp';
+  static const String loginScreenRoute = '/login';
   static const String homeScreenRoute = '/home';
   static const String profile = '/profile';
 }
 
 final router = GoRouter(
-  initialLocation: AppRoutes.signUp,
+  initialLocation: AppRoutes.signUpScreenRoute,
   routes: [
     // GoRoute(
     //   path: AppRoutes.splashScreenRoute,
@@ -42,7 +43,7 @@ final router = GoRouter(
     //   ),
     // ),
     GoRoute(
-      path: AppRoutes.login,
+      path: AppRoutes.loginScreenRoute,
       pageBuilder: (context, state) => buildSlideTransition(
         context: context,
         state: state,
@@ -50,11 +51,19 @@ final router = GoRouter(
       ),
     ),
     GoRoute(
-      path: AppRoutes.signUp,
+      path: AppRoutes.signUpScreenRoute,
       pageBuilder: (context, state) => buildSlideTransition(
         context: context,
         state: state,
         child: const SignUpScreen(),
+      ),
+    ),
+      GoRoute(
+      path: AppRoutes.homeScreenRoute,
+      pageBuilder: (context, state) => buildSlideTransition(
+        context: context,
+        state: state,
+        child: const HomeScreen(),
       ),
     ),
   ],
