@@ -27,4 +27,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
   }
+
+  @override
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 }

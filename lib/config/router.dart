@@ -1,6 +1,8 @@
 import 'package:api_integration/features/authentication/presentation/screens/home_screen.dart';
 import 'package:api_integration/features/authentication/presentation/screens/login_screen.dart';
 import 'package:api_integration/features/authentication/presentation/screens/sign_up_screen.dart';
+import 'package:api_integration/myApp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 
@@ -32,16 +34,16 @@ abstract class AppRoutes {
 }
 
 final router = GoRouter(
-  initialLocation: AppRoutes.signUpScreenRoute,
+  initialLocation: AppRoutes.splashScreenRoute,
   routes: [
-    // GoRoute(
-    //   path: AppRoutes.splashScreenRoute,
-    //   pageBuilder: (context, state) => buildSlideTransition(
-    //     context: context,
-    //     state: state,
-    //     child: const SplashScreen(),
-    //   ),
-    // ),
+    GoRoute(
+      path: AppRoutes.splashScreenRoute,
+      pageBuilder: (context, state) => buildSlideTransition(
+        context: context,
+        state: state,
+        child: const SplashScreen(),
+      ),
+    ),
     GoRoute(
       path: AppRoutes.loginScreenRoute,
       pageBuilder: (context, state) => buildSlideTransition(
@@ -58,7 +60,7 @@ final router = GoRouter(
         child: const SignUpScreen(),
       ),
     ),
-      GoRoute(
+    GoRoute(
       path: AppRoutes.homeScreenRoute,
       pageBuilder: (context, state) => buildSlideTransition(
         context: context,
@@ -68,3 +70,4 @@ final router = GoRouter(
     ),
   ],
 );
+
