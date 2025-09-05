@@ -10,6 +10,7 @@ import 'package:api_integration/features/authentication/presentation/bloc/stats.
 import 'package:api_integration/widgets/auth_card.dart';
 import 'package:api_integration/widgets/primary_button.dart';
 import 'package:api_integration/widgets/primary_textFeild.dart';
+import 'package:api_integration/widgets/google_sign_in_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:api_integration/core/utils/app_text_theme.dart';
@@ -147,6 +148,26 @@ class _SignInScreenState extends State<SignInScreen> {
                         );
                       },
                     ),
+                    15.heightBox,
+                    // Divider with "OR" text
+                    Row(
+                      children: [
+                        const Expanded(child: Divider()),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Text(
+                            'OR',
+                            style: AppTextTheme.bodyMedium(
+                              color: AppColors.lightGrey,
+                            ).copyWith(fontSize: 14),
+                          ),
+                        ),
+                        const Expanded(child: Divider()),
+                      ],
+                    ),
+                    15.heightBox,
+                    // Google Sign-In Button
+                    const GoogleSignInButton(),
                     10.heightBox,
                     Row(
                       mainAxisSize: MainAxisSize.min,

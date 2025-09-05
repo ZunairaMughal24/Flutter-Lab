@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(FirebaseAuth.instance),
+      create: (context) => AuthBloc(
+        FirebaseAuth.instance,
+        GoogleSignIn(),
+      ),
       child: MaterialApp.router(
         routerConfig: router,
         theme: AppTheme.lightTheme,
@@ -37,7 +41,7 @@ class SplashScreen extends StatelessWidget {
       body: Center(
         child: BlocProvider(
           create: (context) =>
-              AuthBloc(FirebaseAuth.instance)
+              AuthBloc(FirebaseAuth.instance, GoogleSignIn())
                 ..add(AuthStatusChanged(FirebaseAuth.instance.currentUser)),
           child: BlocListener<AuthBloc, AuthState>(
             listener: (context, state) {
